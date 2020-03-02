@@ -1,0 +1,114 @@
+body { 
+	background: #15202b; 
+	color:#d9d9d9;
+}
+ul { 
+	margin:0; 
+	padding:0;
+ 	list-style-type:none;
+}
+a { color:#d9d9d9; }
+a:hover { text-decoration:none; color:#ffc107; }
+img { max-width:100%; max-height:100%; }
+h1 { font-size:2rem; }
+#main { margin:20px 0; }
+
+.holder-movie img {
+    height: 260px;
+    width: 100%;
+}
+.holder-movie .status {
+    top: 4px;
+    left: 4px;
+    background: 
+    #dc3545e6;
+    padding: 4px 8px;
+    font-size: 12px;
+    border-radius: 5px;
+    position: absolute;
+}
+.holder-movie .comment {
+    bottom: 4px;
+    left: 4px;
+    background: 
+    #14202bde;
+    padding: 4px 8px;
+    position: absolute;
+    font-size: 12px;
+    border-radius: 5px;
+}
+.holder-movie .views {
+    bottom: 4px;
+    right: 4px;
+    background: 
+    #14202bde;
+    padding: 4px 8px;
+    position: absolute;
+    font-size: 12px;
+    border-radius: 5px;
+}
+.holder-movie .info-container ul li {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    color: 
+    grey;
+}
+
+.bg-holder {
+    background: #212c35 !important;
+}
+.film-info .comment {
+    bottom: 10px;
+    left: 10px;
+    background: #14202be8;
+    padding: 4px 8px;
+    font-size: 12px;
+    border-radius: 5px;
+    position: absolute;
+}
+.film-info .views {
+    bottom: 10px;
+    right: 10px;
+    background: #14202be8;
+    padding: 4px 8px;
+    font-size: 12px;
+    border-radius: 5px;
+    position: absolute;
+}
+.description-movie {
+    background: 
+    #212c35;
+    padding: 15px;
+    margin-top: 10px;
+    max-height: 300px;
+    overflow-y: auto;
+}
+.page-item .page-link {
+    color: #ffc107;
+	background-color:#212c35;
+	border:#212c35;
+}
+.page-item.disabled .page-link {
+	color: #6c757d;
+	background-color:#212c35;
+	border:#212c35;
+}
+.page-item .page-link.current-page {
+	border:none; 
+	color:#d9d9d9
+}
+.breadcrumb-item + .breadcrumb-item::before {
+    display: inline-block;
+    padding-right: .5rem;
+    color:#6c757d;
+    content: "/";
+}
+
+.watch-history-item {
+    display: block;
+    padding: .5rem 0;
+    margin-bottom: -1px;
+    border-bottom: 1px solid #343a40 ;
+}
