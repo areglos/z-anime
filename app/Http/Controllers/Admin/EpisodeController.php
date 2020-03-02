@@ -93,7 +93,7 @@ class EpisodeController extends Controller
   protected function existsDrive ($drive_url) {
   	$client = new \GuzzleHttp\Client();
   	$response = $client->request('GET', $drive_url, ['http_errors' => false]);
-  	if ($response->getStatusCode() == '404') {
+  	if ($response->getStatusCode() != 200) {
   		return false;
   	}
   	return true;

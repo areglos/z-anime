@@ -58,10 +58,10 @@
 	<!-- New Cat -->
 	<v-dialog v-model="dialog" max-width="500">
 	  <v-card>
-	    <v-card-title>Add new film</v-card-title>
+	    <v-card-title>Add new category</v-card-title>
 	    <v-divider></v-divider>
 	    <v-card-text>
-	      <v-text-field label="Film Name" v-model="newCatName" />
+	      <v-text-field label="Film Name" v-model="newCatName" @keyup.enter="createCat" />
 	    </v-card-text>
 	    <v-divider></v-divider>
 	    <v-card-actions>
