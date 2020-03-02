@@ -16,7 +16,7 @@ class UserSeeder extends Seeder
         	[      
                 'name' => 'Bùi Tuyến Lĩnh',
         		'email' => 'linh@gmail.com',
-                'password' => bcrypt('123456'),
+                'password' => bcrypt('linh@210797'),
                 'google_id' => null,
                 'role' => 'admin',
                 'active' => 1
