@@ -24,7 +24,7 @@
 
 					<v-chip 
 						v-for="(ep, idx) in film.episodes" :key="ep.id" 
-						:color="getColor(ep)" label link class="mr-1" @click="openEpisodeForm(ep, idx)">
+						:color="getColor(ep)" label link class="mr-1" @click="openEpisodeForm(ep)">
 					{{ ep.label ? ep.label : ep.ep }}
 					</v-chip><v-chip label link @click="openEpisodeForm()">+</v-chip>
 				</v-card-text>
@@ -33,7 +33,7 @@
 
 
 			<v-card class="elevation-6" v-if="episodeForm">
-				<v-card-title>{{ this.index ? 'Edit episode' : 'Add new episode' }}
+				<v-card-title>{{ this.episode.id ? 'Edit episode' : 'Add new episode' }}
 				</v-card-title>
 				<v-divider></v-divider>
 				<v-card-text>
@@ -54,11 +54,11 @@
 	        	Back
 	        </v-btn>
 	        <v-spacer />
-	        <v-btn color="red" @click="removeEpisode()" v-if="index">
+	        <v-btn color="red" @click="removeEpisode()" v-if="this.episode.id">
 	        	Delete
 	        </v-btn>
 	        <v-btn color="primary" @click="submitEpisodeForm()">
-	        	{{ index ? 'Update' : 'Add' }}
+	        	{{ this.episode.id ? 'Update' : 'Add' }}
 	        </v-btn>
 	        
 	      </v-card-actions>
@@ -88,11 +88,6 @@ export default {
 			loading:false,
 		}
 	},
-	watch: {
-		episodeForm (val) {
-			if (!val) this.episode = {}
-		}
-	},
 	async created () {
 		this.loading = true
 		try {
@@ -110,22 +105,23 @@ export default {
 			if (ep.status == 'uploading') return 'orange'
 			if (ep.status == 'error') return 'red'
 		},
-		openEpisodeForm(input = null, index = null) {
-			this.index = index
-			this.episode = Object.assign({}, input)
+		openEpisodeForm(ep = {}) {
+			this.episode = ep
 			this.episodeForm = true
 		},
 		async submitEpisodeForm() {
 			this.loading = true
 			try {
-				if (!this.index) {
+				if (!this.episode.id) {
 					let ep = (await axios.post('/films/'+this.film.id+'/episodes', this.episode)).data
 					this.film.episodes.push(ep)
 					this.$bus.$emit('snackbar', { text: 'Create Successful' })
 				}
 				else {
 					let film = (await axios.put('/films/'+this.film.id+'/episodes/'+this.episode.id, this.episode)).data
-					this.film.episodes.splice(this.index,1,film) 
+					const index = this.film.episodes.indexOf(this.episode)
+					console.log(index)
+					this.film.episodes.splice(index,1,film) 
 					this.$bus.$emit('snackbar', { text: 'Update Successful' })
 				}
 				this.episodeForm = false
@@ -152,5 +148,4 @@ export default {
 		}
 	}
 }
-
 </script>

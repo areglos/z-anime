@@ -61,7 +61,7 @@
 	    <v-card-title>Add new type</v-card-title>
 	    <v-divider></v-divider>
 	    <v-card-text>
-	      <v-text-field label="Film Name" v-model="newTypeName" />
+	      <v-text-field label="Film Name" v-model="newTypeName" @keyup.enter="createType" />
 	    </v-card-text>
 	    <v-divider></v-divider>
 	    <v-card-actions>

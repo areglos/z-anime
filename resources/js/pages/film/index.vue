@@ -68,7 +68,7 @@
     <v-card-title>Add new film</v-card-title>
     <v-divider></v-divider>
     <v-card-text>
-      <v-text-field label="Film Name" v-model="newFilmName" />
+      <v-text-field label="Film Name" v-model="newFilmName" @keyup.enter="createFilm" />
     </v-card-text>
     <v-divider></v-divider>
     <v-card-actions>

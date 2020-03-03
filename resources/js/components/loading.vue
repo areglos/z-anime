@@ -3,6 +3,7 @@
   :absolute="true"
   :opacity="0.3"
   :value="loading"
+  z-index="999"
 >
   <v-card
     color="primary"

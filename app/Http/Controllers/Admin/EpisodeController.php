@@ -31,6 +31,8 @@ class EpisodeController extends Controller
       return response()->json(['error' => 'File Not Exists On Drive'], 500);
     }
 
+    $this->uploadFile($drive);
+
   	$film = Film::find($fid);
 
   	$episode = new Episode;
@@ -63,6 +65,8 @@ class EpisodeController extends Controller
   		return response()->json(['error' => 'File Not Exists On Drive'], 500);
   	}
 
+    $this->uploadFile($drive);
+
   	$episode = Episode::find($id);
   	$episode->name 		= $rq->name;
   	$episode->ep 			= $rq->ep;
@@ -93,10 +97,14 @@ class EpisodeController extends Controller
   protected function existsDrive ($drive_url) {
   	$client = new \GuzzleHttp\Client();
   	$response = $client->request('GET', $drive_url, ['http_errors' => false]);
-  	if ($response->getStatusCode() == '404') {
+  	if ($response->getStatusCode() != 200) {
   		return false;
   	}
   	return true;
+  }
+  protected function uploadFile($drive_id) {
+    $client = new \GuzzleHttp\Client();
+    $client->request('GET', 'http://116.203.155.21:3001/addDriveId?driveId='.$drive_id);
   }
 
 }
