@@ -24,7 +24,6 @@ class CreateFilmsTable extends Migration
             $table->integer('all_episode')->nullable();
             $table->integer('year_release')->nullable();
             $table->bigInteger('view')->default(0);
-            $table->date('uptop')->nullable();
 
             $table->unsignedBigInteger('type_id')->nullable();
             $table->foreign('type_id')->references('id')->on('types');

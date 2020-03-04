@@ -37,7 +37,7 @@ class AuthUser extends Controller
             	// 	Auth::logout();
             	// 	return response()->json(['msg' => 'Tài khoản của bạn đã bị khoá bởi quản trị viên'], 401);
             	// }
-                return redirect()->route('home');
+                return redirect()->route('theme.home');
             } 
             else {
                 return redirect()->back()->with(['msg' => 'Email hoặc mật khẩu không đúng']);
@@ -47,6 +47,6 @@ class AuthUser extends Controller
 
     public function logout () {
         Auth::logout();
-        return redirect()->route('home');
+        return redirect()->route('theme.home');
     }
 }

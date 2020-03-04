@@ -41,6 +41,7 @@ class EpisodeController extends Controller
   	$episode->label 	= $rq->label;
   	$episode->drive 	= $rq->drive;
   	$episode->film_id = $film->id;
+    $episode->show    = 0;
   	$episode->status 	= 'uploading';
   	$episode->save();
 

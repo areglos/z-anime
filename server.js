@@ -19,14 +19,14 @@ pool.getConnection()
 				let drive = getDriveId(item.drive)
 				let lStream = (await axios.get('http://116.203.155.21:8028/getLinkStream?file=downloaded.'+drive+'.mp4')).data
 				if (lStream.length > 0 ) {
-					await conn.query('UPDATE episodes SET status="uploaded" WHERE id='+item.id)
+					await conn.query('UPDATE episodes as ep SET ep.status="uploaded", ep.show= 1 WHERE id='+item.id)
 					//console.log('upload complete' + item.id)
 				}
 				else {
 					//console.log('continue upload')
 				}	
 	  	}
-  	},30000)
+  	},5000)
   	   
   })
   .catch(err => {

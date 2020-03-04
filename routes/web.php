@@ -18,11 +18,8 @@ Route::any('/admin{all}', function() {
 
 Route::group(['namespace'=> 'Theme'], function () {
 
-	Route::get('/', function () {
-		$title = 'Page Index';
-		return view('theme.pages.index', compact('title') );
-	})->name('home');
-
+	Route::get('/', 'PageController@home')->name('theme.home');
+	Route::get('/anime/{slug}', function () {})->name('theme.anime');
 	Route::get('/category/:slug', function () {} )->name('theme.category');
 	Route::get('/type/:slug', function () {} )->name('theme.type');
 	Route::get('/history', function () {} )->name('theme.history');

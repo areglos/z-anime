@@ -10,7 +10,7 @@ class Film extends Model
 	use Sluggable;
   protected $table = 'films';
   protected $fillable = [
-      'name', 'other_name', 'type_id', 'slug', 'description', 'ep', 'image', 'background', 'view', 'all_episode', 'year_release', 'uptop'
+      'name', 'other_name', 'type_id', 'slug', 'description', 'ep', 'image', 'background', 'view', 'all_episode', 'year_release'
   ];
   public function sluggable () {
       return [
@@ -28,4 +28,7 @@ class Film extends Model
       return $this->hasMany(Episode::class);
   }
 
+  public function latest_episode () {
+    return $this->hasOne(Episode::class)->orderBy('ep','desc')->where('status', 'uploaded')->latest();
+  }
 }
