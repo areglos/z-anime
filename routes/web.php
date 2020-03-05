@@ -19,9 +19,11 @@ Route::any('/admin{all}', function() {
 Route::group(['namespace'=> 'Theme'], function () {
 
 	Route::get('/', 'PageController@home')->name('theme.home');
-	Route::get('/anime/{slug}', function () {})->name('theme.anime');
-	Route::get('/category/:slug', function () {} )->name('theme.category');
-	Route::get('/type/:slug', function () {} )->name('theme.type');
+	Route::get('/anime/{slug}', 'PageController@anime')->name('theme.anime');
+	Route::get('/watch/{slug}', 'PageController@watch')->name('theme.watch');
+	Route::get('/stream', 'PageController@stream')->name('theme.stream');
+	Route::get('/category/{slug}', 'PageController@category' )->name('theme.category');
+	Route::get('/type/{slug}', 'PageController@type' )->name('theme.type');
 	Route::get('/history', function () {} )->name('theme.history');
 
 

@@ -11,10 +11,10 @@
 			<div class="col-6 col-md-4 col-lg-3  holder-movie">
 				<div class="position-relative">
 					<a href="{{ route('theme.anime', $film->slug )}}">
-						<img src="{{ $film->image ? $film->image : '/img/film_image.jpeg'}}" alt="Cuộc Phiêu Lưu Đến Thế Giới Ảo Bất Tận" class="img-fluid rounded">
+						<img src="{{ asset($film->image ? $film->image : '/img/film_image.jpeg')}}" alt="{{ $film->name }}" class="img-fluid rounded">
 					</a>
 					<span class="status">{{ $film->latest_episode->ep }}</span>
-					<span class="comment"><i class="fal fa-comment-alt-lines"></i> 0</span><span class="views"><i class="fa fa-eye"></i> {{ $film->view }}</span>
+					<span class="comment"><i class="fa fa-heart mr-1"></i>0</span>
 				</div>
 				<div class="info-container">
 					<ul class="p-0 mt-2 mb-3">

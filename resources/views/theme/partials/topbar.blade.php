@@ -1,3 +1,10 @@
+<?php
+	use App\Models\Category;
+	$categories = Category::all();
+
+	use App\Models\Type;
+	$types = Type::all();
+?>
 <div id="header" class="container">
 	<nav class="navbar navbar-light justify-content-between p-0 pt-2 pb-2" style="border-bottom:1px solid #343a40  !important; position:relative;">
 		<ul class="list-inline mb-0 menu-top-category active">
@@ -42,26 +49,27 @@
 			<button class="btn btn-dark my-2 my-sm-0 d-none d-md-inline" type="submit"><i class="fa fa-search"></i></button>
 		</form>
 
-		<!--
+		
 		<div class="collapse" id="genres" style="position:absolute; top:calc(100% + 1px); left:0; width:100%; z-index:999; background:#212c35; padding:1rem 15px; transition:none;">
 			<div class="row">
-				// foreach
+				@foreach ($categories as $cat)
 				<div class="col-6 col-sm-3 mb-3">
-					<a href=""></a>
+					<a href="{{ route('theme.category', $cat->slug) }}">{{ $cat->name}}</a>
 				</div>
-				//endforeach
+				@endforeach
 			</div>
 		</div>
+		
 		<div class="collapse" id="types" style="position:absolute; top:calc(100% + 1px); left:0; width:100%; z-index:999; background:#212c35; padding:1rem 15px; transition:none;">
 			<div class="row">
-				// foreach
+				@foreach ($types as $type)
 				<div class="col-6 col-sm-3 mb-3">
-					<a href=""></a>
+					<a href="{{ route('theme.type', $type->slug) }}">{{ $type->name }}</a>
 				</div>
-				//endforeach
+				@endforeach
 			</div>
 		</div>
-		-->
+		
 	</nav>
 	
 </div>
